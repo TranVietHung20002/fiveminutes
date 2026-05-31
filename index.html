@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hạt Điều Bình Phước</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="logo">
+        <span class="logo-icon">🌰</span>
+        <span class="logo-text">Hạt Điều Bình Phước</span>
+      </div>
+
+      <!-- Nav desktop (ẩn trên mobile) -->
+      <nav id="main-nav">
+        <a href="#" onclick="closeNav()">Trang chủ</a>
+        <a href="#product-list" onclick="closeNav()">Sản phẩm</a>
+        <a href="#" onclick="closeNav()">Liên hệ</a>
+      </nav>
+
+      <!-- Nhóm nút bên phải -->
+      <div class="header-actions">
+        <button class="cart-toggle" id="cart-toggle-btn">
+          🛒 <span class="cart-toggle-label">Giỏ hàng</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <!-- Hamburger — chỉ hiện trên mobile -->
+        <button class="nav-toggle" id="nav-toggle-btn" aria-label="Mở menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hạt Điều Rang Muối<br/>Thơm Giòn Tự Nhiên</h1>
+      <p>Sản phẩm sạch, không chất bảo quản, giao hàng toàn quốc</p>
+      <a href="#product-list" class="btn-hero">Mua ngay</a>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-layout">
+
+    <!-- DANH SÁCH SẢN PHẨM -->
+    <section id="product-list">
+      <h2 class="section-title">Sản Phẩm Của Chúng Tôi</h2>
+      <!-- Các card sản phẩm được render bởi script.js / renderProducts() -->
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- GIỎ HÀNG SIDEBAR / DRAWER -->
+    <aside id="cart" class="cart-sidebar">
+      <!-- Nút đóng — chỉ hiện khi là drawer trên mobile -->
+      <button class="cart-close" id="cart-close-btn" aria-label="Đóng giỏ hàng">✕</button>
+      <h2 class="cart-title">🛒 Giỏ Hàng</h2>
+      <div id="cart-items" class="cart-items">
+        <p class="cart-empty">Giỏ hàng của bạn đang trống.</p>
+      </div>
+      <div class="cart-summary" id="cart-summary" style="display:none;">
+        <div class="cart-total">
+          Tổng cộng: <strong id="cart-total">0₫</strong>
+        </div>
+        <button class="btn-checkout">Thanh toán</button>
+        <button class="btn-clear" id="btn-clear">Xóa tất cả</button>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Hạt Điều Bình Phước · Điện thoại: 0971225845 · Email: tranviethung@gmail.com</p>
+  </footer>
+
+  <!-- Overlay backdrop (dùng cho mobile nav & cart drawer) -->
+  <div class="overlay" id="overlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
