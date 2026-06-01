@@ -1,12 +1,11 @@
 {
   "mcpServers": {
-    "gmail-orders": {
+    "resend-orders": {
       "command": "node",
-      "args": ["server/mcp-gmail.js"],
+      "args": ["server/mcp-resend.js"],
       "env": {
-        "GMAIL_USER": "REPLACE_YOUR_GMAIL@gmail.com",
-        "GMAIL_APP_PASSWORD": "REPLACE_16_CHAR_APP_PASSWORD",
-        "OWNER_EMAIL": "REPLACE_YOUR_GMAIL@gmail.com"
+        "RESEND_API_KEY": "re_MqFohr7a_2mgrcwtJHBzwGYvAsvkwct5d",
+        "OWNER_EMAIL": "hungtran30415@gmail.com"
       }
     }
   }
