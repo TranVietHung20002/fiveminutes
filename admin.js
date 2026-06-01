@@ -57,29 +57,13 @@ function loadProducts() {
   }
 }
 
-async function saveProducts() {
+function saveProducts() {
+  // Đọc lại giá trị mới nhất từ tất cả card trước khi lưu
   document.querySelectorAll(".admin-card").forEach(card => syncCardToState(card));
-
-  // Lưu localStorage (fallback offline)
   localStorage.setItem("adminProducts", JSON.stringify(products));
+  // Báo trang chính đọc lại
   localStorage.setItem("productsUpdated", Date.now().toString());
-
-  // Lưu lên MongoDB qua API
-  try {
-    const res = await fetch("/api/products", {
-      method:  "POST",
-      headers: { "Content-Type": "application/json" },
-      body:    JSON.stringify(products),
-    });
-    const data = await res.json();
-    if (data.ok) {
-      showToast(`✓ Đã lưu ${data.count} sản phẩm lên MongoDB!`, "success");
-    } else {
-      throw new Error(data.error);
-    }
-  } catch (err) {
-    showToast(`⚠ Lưu local OK, MongoDB lỗi: ${err.message}`, "error");
-  }
+  showToast("✓ Đã lưu — trang web sẽ cập nhật ngay!", "success");
 }
 
 // Đọc giá trị từ input trong card → cập nhật vào mảng products
