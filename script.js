@@ -439,8 +439,7 @@ checkoutForm.addEventListener("submit", (e) => {
     body:    JSON.stringify(order),
   })
     .then((r) => r.json())
-    .then((d) => d.ok && console.log("Email gửi:", d.emailId))
-    .catch(() => console.warn("Không gửi được email."));
+    .catch(() => {});
 
   cart = []; saveCart(); updateCartUI();
   closeCheckoutModal(); checkoutForm.reset();
