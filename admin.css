@@ -54,10 +54,12 @@
 .btn-admin:hover  { opacity: 0.85; transform: scale(1.02); }
 .btn-admin:active { transform: scale(0.97); }
 
-.btn-add-product  { background: #38a169; color: #fff; }
-.btn-save-all     { background: #3182ce; color: #fff; }
-.btn-view-site    { background: #718096; color: #fff; }
-.btn-cancel       { background: #e2e8f0; color: #2d3748; }
+.btn-add-product    { background: #38a169; color: #fff; }
+.btn-save-all       { background: #3182ce; color: #fff; }
+.btn-change-pw      { background: #805ad5; color: #fff; }
+.btn-view-site      { background: #718096; color: #fff; }
+.btn-logout         { background: #e53e3e; color: #fff; }
+.btn-cancel         { background: #e2e8f0; color: #2d3748; }
 .btn-delete-confirm { background: #e53e3e; color: #fff; }
 
 /* ===== LƯỚI SẢN PHẨM ===== */

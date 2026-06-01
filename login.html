@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập — Quản Trị</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body class="login-body">
+
+  <div class="login-card">
+    <div class="login-logo">
+      <span>🌰</span>
+      <h1>Hạt Điều Vàng</h1>
+      <p>Trang quản trị</p>
+    </div>
+
+    <form id="login-form" novalidate>
+      <div class="login-field">
+        <label for="username">Tài khoản</label>
+        <input type="text" id="username" placeholder="Nhập tên đăng nhập" autocomplete="username" required />
+      </div>
+      <div class="login-field">
+        <label for="password">Mật khẩu</label>
+        <div class="pw-wrap">
+          <input type="password" id="password" placeholder="Nhập mật khẩu" autocomplete="current-password" required />
+          <button type="button" class="btn-eye" id="btn-eye" title="Hiện/ẩn">👁</button>
+        </div>
+      </div>
+
+      <p class="login-error" id="login-error"></p>
+
+      <button type="submit" class="btn-login">Đăng nhập</button>
+    </form>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>

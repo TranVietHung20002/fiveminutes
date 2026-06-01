@@ -1,3 +1,8 @@
+// ===== AUTH GUARD =====
+if (sessionStorage.getItem("adminLoggedIn") !== "1") {
+  window.location.href = "login.html";
+}
+
 // ===== DỮ LIỆU GỐC (copy từ script.js) =====
 const DEFAULT_PRODUCTS = [
   { id:1, sku:"HDV-001", name:"Hạt Điều Rang Muối",  description:"Hạt điều rang muối truyền thống, giòn tan, đậm vị.",          price:120000, weight:"250g", stock:50, image:"img/OIP.jpg",     badge:"Bán chạy", badgeType:"hot" },
@@ -301,6 +306,51 @@ document.addEventListener("keydown", (e) => {
     e.preventDefault();
     saveProducts();
   }
+});
+
+// ===== ĐĂNG XUẤT =====
+document.getElementById("btn-logout").addEventListener("click", () => {
+  sessionStorage.removeItem("adminLoggedIn");
+  window.location.href = "login.html";
+});
+
+// ===== ĐỔI MẬT KHẨU =====
+const pwModal = document.getElementById("pw-modal");
+
+document.getElementById("btn-change-pw").addEventListener("click", () => {
+  document.getElementById("new-username").value  = "";
+  document.getElementById("new-password").value  = "";
+  document.getElementById("confirm-password").value = "";
+  document.getElementById("pw-error").textContent  = "";
+  pwModal.classList.add("active");
+});
+
+document.getElementById("pw-cancel").addEventListener("click", () => {
+  pwModal.classList.remove("active");
+});
+
+pwModal.addEventListener("click", (e) => {
+  if (e.target === pwModal) pwModal.classList.remove("active");
+});
+
+document.getElementById("pw-save").addEventListener("click", () => {
+  const newUser  = document.getElementById("new-username").value.trim();
+  const newPass  = document.getElementById("new-password").value;
+  const confirm  = document.getElementById("confirm-password").value;
+  const errEl    = document.getElementById("pw-error");
+
+  if (!newPass) { errEl.textContent = "Vui lòng nhập mật khẩu mới."; return; }
+  if (newPass !== confirm) { errEl.textContent = "Mật khẩu xác nhận không khớp."; return; }
+  if (newPass.length < 6)  { errEl.textContent = "Mật khẩu phải có ít nhất 6 ký tự."; return; }
+
+  const current = JSON.parse(localStorage.getItem("adminCredentials") || "{}");
+  const updated = {
+    username: newUser || current.username || "admin",
+    password: btoa(newPass),
+  };
+  localStorage.setItem("adminCredentials", JSON.stringify(updated));
+  pwModal.classList.remove("active");
+  showToast(`✓ Đã lưu tài khoản: ${updated.username}`, "success");
 });
 
 // ===== KHỞI CHẠY =====
