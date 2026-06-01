@@ -1,4 +1,5 @@
-import { Resend } from "resend";
+import { Resend }              from "resend";
+import { connectDB, getDB }   from "../lib/mongodb.js";
 
 const fmt = (n) => Number(n).toLocaleString("vi-VN") + "₫";
 
@@ -76,6 +77,14 @@ export default async function handler(req, res) {
     });
 
     if (error) throw new Error(error.message);
+
+    // Lưu đơn hàng vào MongoDB (không chặn response nếu lỗi DB)
+    try {
+      const client = await connectDB();
+      await getDB(client).collection("orders").insertOne({
+        ...order, savedAt: new Date().toISOString()
+      });
+    } catch { /* bỏ qua lỗi DB, email đã gửi */ }
 
     res.status(200).json({ ok: true, emailId: data.id });
   } catch (err) {

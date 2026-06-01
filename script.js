@@ -479,7 +479,24 @@ function initScrollAnimations() {
 
 // ===== KHỞI CHẠY =====
 
-loadCart();
-renderProducts();
-updateCartUI();
-initScrollAnimations();
+async function init() {
+  loadCart();
+
+  // Load sản phẩm từ MongoDB nếu đang chạy trên Vercel
+  if (window.location.protocol !== "file:") {
+    try {
+      const res  = await fetch("/api/products");
+      const data = await res.json();
+      if (Array.isArray(data) && data.length) {
+        products.length = 0;
+        data.forEach((p) => products.push(p));
+      }
+    } catch { /* fallback về dữ liệu hardcode */ }
+  }
+
+  renderProducts();
+  updateCartUI();
+  initScrollAnimations();
+}
+
+init();
