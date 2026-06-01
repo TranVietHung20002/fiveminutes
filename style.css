@@ -278,6 +278,37 @@ nav a:hover {
   flex: 1;
 }
 
+/* Dòng meta: số lượng + ship */
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.product-stock {
+  font-size: 0.75rem;
+  color: var(--text-mid);
+  background: var(--cream-dark);
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+
+.product-ship {
+  font-size: 0.72rem;
+  color: #2e7d32;
+  background: #e8f5e9;
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
 .product-footer {
   display: flex;
   align-items: center;
@@ -452,6 +483,27 @@ nav a:hover {
   min-width: 70px;
   text-align: right;
 }
+
+/* Dòng phí ship trong giỏ */
+.cart-ship-row {
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  padding: 6px 0 2px;
+  border-top: 1px dashed var(--cream-dark);
+}
+
+.ship-free { color: #2e7d32; font-weight: 700; }
+.ship-fee  { color: #c0392b; font-weight: 700; }
+
+/* Dòng phí ship trong bảng modal */
+.tfoot-ship td {
+  padding: 8px 10px;
+  border-top: 2px dashed var(--cream-dark);
+  font-size: 0.85rem;
+  color: var(--text-mid);
+}
+
+.tfoot-ship .col-sub { color: #2e7d32; font-weight: 700; }
 
 /* ===== TỔNG CỘNG & THANH TOÁN ===== */
 .cart-summary {

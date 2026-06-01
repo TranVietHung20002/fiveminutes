@@ -1,68 +1,14 @@
 // ===== DỮ LIỆU SẢN PHẨM =====
 const products = [
-  {
-    id: 1, sku: "HDV-001",
-    name: "Hạt Điều Rang Muối",
-    description: "Hạt điều rang muối truyền thống, giòn tan, đậm vị.",
-    price: 120000, weight: "250g",
-    image: "img/OIP.jpg", badge: "Bán chạy", badgeType: "hot",
-  },
-  {
-    id: 2, sku: "HDV-002",
-    name: "Hạt Điều Mật Ong",
-    description: "Phủ mật ong nguyên chất, vị ngọt thanh tự nhiên.",
-    price: 145000, weight: "250g",
-    image: "img/OIP (1).jpg", badge: "Mới", badgeType: "new",
-  },
-  {
-    id: 3, sku: "HDV-003",
-    name: "Hạt Điều Sấy Khô",
-    description: "Sấy khô tự nhiên, giữ nguyên dinh dưỡng và hương vị.",
-    price: 110000, weight: "250g",
-    image: "img/OIP.jpg", badge: null, badgeType: null,
-  },
-  {
-    id: 4, sku: "HDV-004",
-    name: "Hạt Điều Tỏi Ớt",
-    description: "Cay nồng hấp dẫn, thích hợp cho người thích vị đậm.",
-    price: 135000, weight: "250g",
-    image: "img/OIP (1).jpg", badge: null, badgeType: null,
-  },
-  {
-    id: 5, sku: "HDV-005",
-    name: "Hạt Điều Phô Mai",
-    description: "Áo phô mai béo ngậy, tan ngay trong miệng.",
-    price: 155000, weight: "250g",
-    image: "img/OIP.jpg", badge: "Mới", badgeType: "new",
-  },
-  {
-    id: 6, sku: "HDV-006",
-    name: "Hạt Điều Wasabi",
-    description: "Vị wasabi cay nồng đặc trưng, kích thích vị giác.",
-    price: 148000, weight: "250g",
-    image: "img/OIP (1).jpg", badge: null, badgeType: null,
-  },
-  {
-    id: 7, sku: "HDV-007",
-    name: "Hạt Điều Socola",
-    description: "Bọc socola đen đắng, kết hợp hoàn hảo giữa ngọt và béo.",
-    price: 165000, weight: "200g",
-    image: "img/OIP.jpg", badge: "Mới", badgeType: "new",
-  },
-  {
-    id: 8, sku: "HDV-008",
-    name: "Hạt Điều Muối Biển",
-    description: "Rang với muối biển tinh khiết, vị nhẹ thanh, ít mặn hơn.",
-    price: 125000, weight: "250g",
-    image: "img/OIP (1).jpg", badge: null, badgeType: null,
-  },
-  {
-    id: 9, sku: "HDV-009",
-    name: "Combo Mix Hạt",
-    description: "Hạt điều kết hợp hạnh nhân, óc chó và macadamia.",
-    price: 220000, weight: "300g",
-    image: "img/OIP.jpg", badge: "Hot deal", badgeType: "hot",
-  },
+  { id:1, sku:"HDV-001", name:"Hạt Điều Rang Muối",  description:"Hạt điều rang muối truyền thống, giòn tan, đậm vị.",          price:120000, weight:"250g", stock:50, image:"img/OIP.jpg",     badge:"Bán chạy", badgeType:"hot" },
+  { id:2, sku:"HDV-002", name:"Hạt Điều Mật Ong",    description:"Phủ mật ong nguyên chất, vị ngọt thanh tự nhiên.",             price:145000, weight:"250g", stock:30, image:"img/OIP (1).jpg", badge:"Mới",      badgeType:"new" },
+  { id:3, sku:"HDV-003", name:"Hạt Điều Sấy Khô",   description:"Sấy khô tự nhiên, giữ nguyên dinh dưỡng và hương vị.",         price:110000, weight:"250g", stock:40, image:"img/OIP.jpg",     badge:null,       badgeType:null  },
+  { id:4, sku:"HDV-004", name:"Hạt Điều Tỏi Ớt",    description:"Cay nồng hấp dẫn, thích hợp cho người thích vị đậm.",          price:135000, weight:"250g", stock:25, image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
+  { id:5, sku:"HDV-005", name:"Hạt Điều Phô Mai",    description:"Áo phô mai béo ngậy, tan ngay trong miệng.",                   price:155000, weight:"250g", stock:20, image:"img/OIP.jpg",     badge:"Mới",      badgeType:"new" },
+  { id:6, sku:"HDV-006", name:"Hạt Điều Wasabi",     description:"Vị wasabi cay nồng đặc trưng, kích thích vị giác.",            price:148000, weight:"250g", stock:15, image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
+  { id:7, sku:"HDV-007", name:"Hạt Điều Socola",     description:"Bọc socola đen đắng, kết hợp hoàn hảo giữa ngọt và béo.",     price:165000, weight:"200g", stock:18, image:"img/OIP.jpg",     badge:"Mới",      badgeType:"new" },
+  { id:8, sku:"HDV-008", name:"Hạt Điều Muối Biển",  description:"Rang với muối biển tinh khiết, vị nhẹ thanh, ít mặn hơn.",    price:125000, weight:"250g", stock:35, image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
+  { id:9, sku:"HDV-009", name:"Combo Mix Hạt",        description:"Hạt điều kết hợp hạnh nhân, óc chó và macadamia.",            price:220000, weight:"300g", stock:10, image:"img/OIP.jpg",     badge:"Hot deal", badgeType:"hot" },
 ];
 
 // Nếu admin đã lưu chỉnh sửa → dùng dữ liệu đó, không dùng hardcode
@@ -125,6 +71,22 @@ function renderProducts() {
     desc.className = "product-desc";
     desc.textContent = product.description;
     info.appendChild(desc);
+
+    // Dòng meta: số lượng tồn + nhãn ship
+    const meta = document.createElement("div");
+    meta.className = "product-meta";
+
+    const stockEl = document.createElement("span");
+    stockEl.className = "product-stock";
+    stockEl.textContent = `Còn: ${product.stock ?? "—"}`;
+    meta.appendChild(stockEl);
+
+    const shipEl = document.createElement("span");
+    shipEl.className = "product-ship";
+    shipEl.innerHTML = `🚚 <span>Mua 2+ free ship</span>`;
+    meta.appendChild(shipEl);
+
+    info.appendChild(meta);
 
     // --- 5. FOOTER (giá + nút) ---
     const footer = document.createElement("div");
@@ -268,9 +230,24 @@ function updateCartUI() {
     cartItemsEl.appendChild(row);
   });
 
-  // --- Tính tổng tiền (reduce cộng dồn giá × số lượng) ---
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  cartTotalEl.textContent = formatPrice(total);
+  // --- Tính tổng tiền + phí ship ---
+  const subtotal  = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalQtyAll = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const shipFee   = totalQtyAll >= 2 ? 0 : 30000;
+
+  // Hiển thị dòng phí ship
+  let shipRow = document.getElementById("cart-ship-row");
+  if (!shipRow) {
+    shipRow = document.createElement("div");
+    shipRow.id = "cart-ship-row";
+    shipRow.className = "cart-ship-row";
+    cartSummary.insertBefore(shipRow, cartSummary.firstChild);
+  }
+  shipRow.innerHTML = shipFee === 0
+    ? `🚚 Phí ship: <strong class="ship-free">Miễn phí</strong>`
+    : `🚚 Phí ship: <strong class="ship-fee">${formatPrice(shipFee)}</strong> <small>(mua 2+ miễn phí)</small>`;
+
+  cartTotalEl.textContent = formatPrice(subtotal + shipFee);
   cartSummary.style.display = "flex";
 }
 
@@ -370,6 +347,11 @@ const checkoutModal = document.getElementById("checkout-modal");
 const successModal  = document.getElementById("success-modal");
 const checkoutForm  = document.getElementById("checkout-form");
 
+function calcShip() {
+  const qty = cart.reduce((s, i) => s + i.quantity, 0);
+  return qty >= 2 ? 0 : 30000;
+}
+
 function openCheckoutModal() {
   if (cart.length === 0) return;
 
@@ -381,14 +363,22 @@ function openCheckoutModal() {
       <td class="col-sub">${formatPrice(item.price * item.quantity)}</td>
     </tr>`).join("");
 
+  const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+  const ship     = calcShip();
+
   document.getElementById("modal-item-list").innerHTML = `
     <table class="order-table">
       <thead><tr><th>Tên sản phẩm</th><th>Đơn giá</th><th>SL</th><th>Thành tiền</th></tr></thead>
       <tbody>${rows}</tbody>
+      <tfoot>
+        <tr class="tfoot-ship">
+          <td colspan="3">🚚 Phí vận chuyển</td>
+          <td class="col-sub">${ship === 0 ? '<span class="ship-free">Miễn phí</span>' : formatPrice(ship)}</td>
+        </tr>
+      </tfoot>
     </table>`;
 
-  document.getElementById("modal-grand-total").textContent =
-    formatPrice(cart.reduce((s, i) => s + i.price * i.quantity, 0));
+  document.getElementById("modal-grand-total").textContent = formatPrice(subtotal + ship);
 
   checkoutModal.classList.add("active");
   document.body.style.overflow = "hidden";
@@ -419,8 +409,10 @@ checkoutForm.addEventListener("submit", (e) => {
     customer: { name: nameEl.value.trim(), phone: phoneEl.value.trim(),
                 address: addressEl.value.trim(), note: document.getElementById("field-note").value.trim() },
     items: cart.map((i) => ({ id: i.id, sku: i.sku, name: i.name, unitPrice: i.price, quantity: i.quantity, subtotal: i.price * i.quantity })),
-    total: cart.reduce((s, i) => s + i.price * i.quantity, 0),
-    status: "pending",
+    subtotal: cart.reduce((s, i) => s + i.price * i.quantity, 0),
+    shipFee:  calcShip(),
+    total:    cart.reduce((s, i) => s + i.price * i.quantity, 0) + calcShip(),
+    status:   "pending",
   };
 
   const orders = JSON.parse(localStorage.getItem("orders") || "[]");
