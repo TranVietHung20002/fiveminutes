@@ -1,14 +1,14 @@
 // ===== DỮ LIỆU GỐC (copy từ script.js) =====
 const DEFAULT_PRODUCTS = [
-  { id:1, sku:"HDV-001", name:"Hạt Điều Rang Muối",  description:"Hạt điều rang muối truyền thống, giòn tan, đậm vị.",          price:120000, weight:"250g", image:"img/OIP.jpg",     badge:"Bán chạy", badgeType:"hot" },
-  { id:2, sku:"HDV-002", name:"Hạt Điều Mật Ong",    description:"Phủ mật ong nguyên chất, vị ngọt thanh tự nhiên.",             price:145000, weight:"250g", image:"img/OIP (1).jpg", badge:"Mới",      badgeType:"new" },
-  { id:3, sku:"HDV-003", name:"Hạt Điều Sấy Khô",   description:"Sấy khô tự nhiên, giữ nguyên dinh dưỡng và hương vị.",         price:110000, weight:"250g", image:"img/OIP.jpg",     badge:null,       badgeType:null  },
-  { id:4, sku:"HDV-004", name:"Hạt Điều Tỏi Ớt",    description:"Cay nồng hấp dẫn, thích hợp cho người thích vị đậm.",          price:135000, weight:"250g", image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
-  { id:5, sku:"HDV-005", name:"Hạt Điều Phô Mai",    description:"Áo phô mai béo ngậy, tan ngay trong miệng.",                   price:155000, weight:"250g", image:"img/OIP.jpg",     badge:"Mới",      badgeType:"new" },
-  { id:6, sku:"HDV-006", name:"Hạt Điều Wasabi",     description:"Vị wasabi cay nồng đặc trưng, kích thích vị giác.",            price:148000, weight:"250g", image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
-  { id:7, sku:"HDV-007", name:"Hạt Điều Socola",     description:"Bọc socola đen đắng, kết hợp hoàn hảo giữa ngọt và béo.",     price:165000, weight:"200g", image:"img/OIP.jpg",     badge:"Mới",      badgeType:"new" },
-  { id:8, sku:"HDV-008", name:"Hạt Điều Muối Biển",  description:"Rang với muối biển tinh khiết, vị nhẹ thanh, ít mặn hơn.",    price:125000, weight:"250g", image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
-  { id:9, sku:"HDV-009", name:"Combo Mix Hạt",        description:"Hạt điều kết hợp hạnh nhân, óc chó và macadamia.",            price:220000, weight:"300g", image:"img/OIP.jpg",     badge:"Hot deal", badgeType:"hot" },
+  { id:1, sku:"HDV-001", name:"Hạt Điều Rang Muối",  description:"Hạt điều rang muối truyền thống, giòn tan, đậm vị.",          price:120000, weight:"250g", stock:50, image:"img/OIP.jpg",     badge:"Bán chạy", badgeType:"hot" },
+  { id:2, sku:"HDV-002", name:"Hạt Điều Mật Ong",    description:"Phủ mật ong nguyên chất, vị ngọt thanh tự nhiên.",             price:145000, weight:"250g", stock:30, image:"img/OIP (1).jpg", badge:"Mới",      badgeType:"new" },
+  { id:3, sku:"HDV-003", name:"Hạt Điều Sấy Khô",   description:"Sấy khô tự nhiên, giữ nguyên dinh dưỡng và hương vị.",         price:110000, weight:"250g", stock:40, image:"img/OIP.jpg",     badge:null,       badgeType:null  },
+  { id:4, sku:"HDV-004", name:"Hạt Điều Tỏi Ớt",    description:"Cay nồng hấp dẫn, thích hợp cho người thích vị đậm.",          price:135000, weight:"250g", stock:25, image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
+  { id:5, sku:"HDV-005", name:"Hạt Điều Phô Mai",    description:"Áo phô mai béo ngậy, tan ngay trong miệng.",                   price:155000, weight:"250g", stock:20, image:"img/OIP.jpg",     badge:"Mới",      badgeType:"new" },
+  { id:6, sku:"HDV-006", name:"Hạt Điều Wasabi",     description:"Vị wasabi cay nồng đặc trưng, kích thích vị giác.",            price:148000, weight:"250g", stock:15, image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
+  { id:7, sku:"HDV-007", name:"Hạt Điều Socola",     description:"Bọc socola đen đắng, kết hợp hoàn hảo giữa ngọt và béo.",     price:165000, weight:"200g", stock:18, image:"img/OIP.jpg",     badge:"Mới",      badgeType:"new" },
+  { id:8, sku:"HDV-008", name:"Hạt Điều Muối Biển",  description:"Rang với muối biển tinh khiết, vị nhẹ thanh, ít mặn hơn.",    price:125000, weight:"250g", stock:35, image:"img/OIP (1).jpg", badge:null,       badgeType:null  },
+  { id:9, sku:"HDV-009", name:"Combo Mix Hạt",        description:"Hạt điều kết hợp hạnh nhân, óc chó và macadamia.",            price:220000, weight:"300g", stock:10, image:"img/OIP.jpg",     badge:"Hot deal", badgeType:"hot" },
 ];
 
 // ===== STATE =====
@@ -71,6 +71,7 @@ function syncCardToState(card) {
   p.description = card.querySelector(".inp-desc").value.trim();
   p.price       = Number(card.querySelector(".inp-price").value) || 0;
   p.weight      = card.querySelector(".inp-weight").value.trim();
+  p.stock       = Number(card.querySelector(".inp-stock").value) ?? 0;
   p.image       = card.querySelector(".inp-image").value.trim();
 
   const badgeVal = card.querySelector(".inp-badge").value;
@@ -131,6 +132,11 @@ function renderCard(product, isNew = false) {
           <span class="field-label">Khối lượng</span>
           <input class="field-input inp-weight" value="${product.weight}" placeholder="250g" />
         </div>
+      </div>
+
+      <div class="field-group">
+        <span class="field-label">Số lượng tồn kho</span>
+        <input class="field-input inp-stock" type="number" value="${product.stock ?? 0}" min="0" placeholder="0" />
       </div>
 
       <div class="field-group">
