@@ -4,7 +4,7 @@
       "command": "node",
       "args": ["server/mcp-resend.js"],
       "env": {
-        "RESEND_API_KEY": "re_MqFohr7a_2mgrcwtJHBzwGYvAsvkwct5d",
+        "RESEND_API_KEY": "REPLACE_WITH_YOUR_KEY",
         "OWNER_EMAIL": "hungtran30415@gmail.com"
       }
     }
