@@ -2,6 +2,9 @@
   "name": "hatdieu-vang",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "resend": "^4.8.0"
   }

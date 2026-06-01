@@ -63,8 +63,16 @@ export default async function handler(req, res) {
 
   try {
     const order  = req.body;
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const apiKey = process.env.RESEND_API_KEY;
     const to     = process.env.OWNER_EMAIL || "hungtran30415@gmail.com";
+
+    console.log("[send-email] order:", order?.id, "| to:", to, "| key:", apiKey ? "ok" : "MISSING");
+
+    if (!apiKey) {
+      return res.status(500).json({ ok: false, error: "RESEND_API_KEY không tìm thấy trong env" });
+    }
+
+    const resend = new Resend(apiKey);
 
     const { data, error } = await resend.emails.send({
       from:    "onboarding@resend.dev",
