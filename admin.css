@@ -1,0 +1,298 @@
+/* ===== ADMIN LAYOUT ===== */
+.admin-body {
+  background: #f0f2f5;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.admin-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.product-count {
+  font-size: 0.85rem;
+  color: #a0aec0;
+  white-space: nowrap;
+}
+
+/* ===== NÚT ADMIN ===== */
+.btn-admin {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-admin:hover  { opacity: 0.85; transform: scale(1.02); }
+.btn-admin:active { transform: scale(0.97); }
+
+.btn-add-product  { background: #38a169; color: #fff; }
+.btn-save-all     { background: #3182ce; color: #fff; }
+.btn-view-site    { background: #718096; color: #fff; }
+.btn-cancel       { background: #e2e8f0; color: #2d3748; }
+.btn-delete-confirm { background: #e53e3e; color: #fff; }
+
+/* ===== LƯỚI SẢN PHẨM ===== */
+.admin-main {
+  max-width: 1400px;
+  margin: 28px auto;
+  padding: 0 20px 60px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* ===== CARD CHỈNH SỬA ===== */
+.admin-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+
+.admin-card:hover       { box-shadow: 0 6px 24px rgba(0,0,0,.13); }
+.admin-card.is-dirty    { border-color: #f6ad55; }
+.admin-card.is-new      { border-color: #68d391; }
+
+/* Toolbar trên ảnh */
+.card-toolbar {
+  position: relative;
+  background: #2d3748;
+}
+
+.card-img-preview {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+}
+
+.card-img-placeholder {
+  width: 100%;
+  height: 170px;
+  background: #4a5568;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #a0aec0;
+}
+
+.badge-pill {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #fff;
+  background: #e07b39;
+}
+
+.badge-pill.new  { background: #7b4a1e; }
+.badge-pill.none { display: none; }
+
+.btn-delete-card {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(229,62,62,0.85);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.btn-delete-card:hover { background: #c53030; }
+
+/* Body card */
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* ===== TRƯỜNG CHỈNH SỬA ===== */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.field-input,
+.field-textarea,
+.field-select {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: #2d3748;
+  background: #f7fafc;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field-input:focus,
+.field-textarea:focus,
+.field-select:focus {
+  outline: none;
+  border-color: #e07b39;
+  background: #fff;
+}
+
+.field-textarea { resize: vertical; min-height: 52px; }
+
+/* Dòng giá + khối lượng cạnh nhau */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Ô nhập URL ảnh */
+.img-url-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.img-url-row .field-input { flex: 1; }
+
+.btn-preview-img {
+  border: none;
+  background: #e2e8f0;
+  border-radius: 6px;
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #4a5568;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.btn-preview-img:hover { background: #cbd5e0; }
+
+/* Số đơn hàng nhỏ dưới card */
+.card-footer-info {
+  padding: 8px 16px 12px;
+  font-size: 0.72rem;
+  color: #a0aec0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ===== TOAST THÔNG BÁO ===== */
+.admin-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #2d3748;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+.admin-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.admin-toast.toast-success { background: #276749; }
+.admin-toast.toast-error   { background: #9b2c2c; }
+
+/* ===== MODAL XÁC NHẬN ===== */
+.modal-box--confirm {
+  max-width: 380px;
+  text-align: center;
+}
+
+.modal-box--confirm h3 {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin-bottom: 8px;
+}
+
+.modal-box--confirm p {
+  color: #718096;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .admin-grid { grid-template-columns: 1fr; }
+  .admin-header-inner { gap: 10px; }
+  .field-row { grid-template-columns: 1fr; }
+}

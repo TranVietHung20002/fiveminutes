@@ -1,0 +1,14 @@
+{
+  "name": "hatdieu-gmail-mcp",
+  "version": "1.0.0",
+  "description": "Gmail MCP Server cho trang web Hạt Điều Vàng",
+  "type": "module",
+  "main": "mcp-gmail.js",
+  "scripts": {
+    "start": "node mcp-gmail.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "nodemailer": "^6.9.16"
+  }
+}

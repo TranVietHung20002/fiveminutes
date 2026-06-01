@@ -79,10 +79,67 @@
   <!-- FOOTER -->
   <footer>
     <p>© 2026 Hạt Điều Bình Phước · Điện thoại: 0971225845 · Email: tranviethung@gmail.com</p>
+    <p style="margin-top:8px;opacity:.5;font-size:.78rem">
+      <a href="admin.html" style="color:inherit;text-decoration:none">⚙ Quản trị</a>
+    </p>
   </footer>
 
   <!-- Overlay backdrop (dùng cho mobile nav & cart drawer) -->
   <div class="overlay" id="overlay"></div>
+
+  <!-- ===== MODAL THANH TOÁN ===== -->
+  <div class="modal-overlay" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Đóng">✕</button>
+      <h2 class="modal-title" id="modal-title">Xác Nhận Đơn Hàng</h2>
+
+      <!-- Tóm tắt giỏ hàng trong modal -->
+      <div class="modal-order-summary">
+        <h3 class="modal-subtitle">Chi tiết đơn hàng</h3>
+        <div class="order-table-wrap" id="modal-item-list"></div>
+        <div class="modal-total-row">
+          <span>Tổng cộng</span>
+          <strong id="modal-grand-total"></strong>
+        </div>
+      </div>
+
+      <!-- Form thông tin khách hàng -->
+      <form id="checkout-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="field-name">Họ và tên <span class="required">*</span></label>
+            <input type="text" id="field-name" placeholder="Nguyễn Văn A" required />
+          </div>
+          <div class="form-group">
+            <label for="field-phone">Số điện thoại <span class="required">*</span></label>
+            <input type="tel" id="field-phone" placeholder="0901 234 567" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="field-address">Địa chỉ giao hàng <span class="required">*</span></label>
+          <textarea id="field-address" rows="2" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="field-note">Ghi chú</label>
+          <textarea id="field-note" rows="2" placeholder="Yêu cầu đặc biệt, thời gian giao hàng..."></textarea>
+        </div>
+        <button type="submit" class="btn-confirm-order">Xác Nhận Đặt Hàng</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ===== MODAL THÀNH CÔNG ===== -->
+  <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true">
+    <div class="modal-box modal-box--success">
+      <div class="success-icon">✓</div>
+      <h2>Đặt Hàng Thành Công!</h2>
+      <p id="success-message"></p>
+      <p class="success-note">Chúng tôi sẽ liên hệ xác nhận đơn hàng trong vòng 30 phút.</p>
+      <button class="btn-confirm-order" id="success-close-btn">Tiếp tục mua sắm</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

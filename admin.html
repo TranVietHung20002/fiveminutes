@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Hạt Điều Vàng</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+
+  <!-- HEADER ADMIN -->
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div class="logo">
+        <span class="logo-icon">🌰</span>
+        <span class="logo-text">Quản Trị Sản Phẩm</span>
+      </div>
+      <div class="admin-actions">
+        <span class="product-count" id="product-count"></span>
+        <button class="btn-admin btn-add-product" id="btn-add-product">+ Thêm sản phẩm</button>
+        <button class="btn-admin btn-save-all"    id="btn-save-all">💾 Lưu tất cả</button>
+        <a href="index.html" class="btn-admin btn-view-site">🌐 Xem trang</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- THÔNG BÁO -->
+  <div class="admin-toast" id="admin-toast"></div>
+
+  <!-- LƯỚI SẢN PHẨM ADMIN -->
+  <main class="admin-main">
+    <div class="admin-grid" id="admin-grid"></div>
+  </main>
+
+  <!-- MODAL XÁC NHẬN XÓA -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal-box modal-box--confirm">
+      <h3>Xóa sản phẩm?</h3>
+      <p id="delete-modal-msg"></p>
+      <div class="confirm-actions">
+        <button class="btn-admin btn-cancel" id="delete-cancel">Hủy</button>
+        <button class="btn-admin btn-delete-confirm" id="delete-confirm">Xóa</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

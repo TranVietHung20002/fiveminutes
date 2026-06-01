@@ -1,96 +1,83 @@
 // ===== DỮ LIỆU SẢN PHẨM =====
 const products = [
   {
-    id: 1,
+    id: 1, sku: "HDV-001",
     name: "Hạt Điều Rang Muối",
     description: "Hạt điều rang muối truyền thống, giòn tan, đậm vị.",
-    price: 120000,
-    weight: "250g",
-    image: "img/OIP.jpg",
-    badge: "Bán chạy",
-    badgeType: "hot",
+    price: 120000, weight: "250g",
+    image: "img/OIP.jpg", badge: "Bán chạy", badgeType: "hot",
   },
   {
-    id: 2,
+    id: 2, sku: "HDV-002",
     name: "Hạt Điều Mật Ong",
     description: "Phủ mật ong nguyên chất, vị ngọt thanh tự nhiên.",
-    price: 145000,
-    weight: "250g",
-    image: "img/OIP (1).jpg",
-    badge: "Mới",
-    badgeType: "new",
+    price: 145000, weight: "250g",
+    image: "img/OIP (1).jpg", badge: "Mới", badgeType: "new",
   },
   {
-    id: 3,
+    id: 3, sku: "HDV-003",
     name: "Hạt Điều Sấy Khô",
     description: "Sấy khô tự nhiên, giữ nguyên dinh dưỡng và hương vị.",
-    price: 110000,
-    weight: "250g",
-    image: "img/OIP.jpg",
-    badge: null,
-    badgeType: null,
+    price: 110000, weight: "250g",
+    image: "img/OIP.jpg", badge: null, badgeType: null,
   },
   {
-    id: 4,
+    id: 4, sku: "HDV-004",
     name: "Hạt Điều Tỏi Ớt",
     description: "Cay nồng hấp dẫn, thích hợp cho người thích vị đậm.",
-    price: 135000,
-    weight: "250g",
-    image: "img/OIP (1).jpg",
-    badge: null,
-    badgeType: null,
+    price: 135000, weight: "250g",
+    image: "img/OIP (1).jpg", badge: null, badgeType: null,
   },
   {
-    id: 5,
+    id: 5, sku: "HDV-005",
     name: "Hạt Điều Phô Mai",
     description: "Áo phô mai béo ngậy, tan ngay trong miệng.",
-    price: 155000,
-    weight: "250g",
-    image: "img/OIP.jpg",
-    badge: "Mới",
-    badgeType: "new",
+    price: 155000, weight: "250g",
+    image: "img/OIP.jpg", badge: "Mới", badgeType: "new",
   },
   {
-    id: 6,
+    id: 6, sku: "HDV-006",
     name: "Hạt Điều Wasabi",
     description: "Vị wasabi cay nồng đặc trưng, kích thích vị giác.",
-    price: 148000,
-    weight: "250g",
-    image: "img/OIP (1).jpg",
-    badge: null,
-    badgeType: null,
+    price: 148000, weight: "250g",
+    image: "img/OIP (1).jpg", badge: null, badgeType: null,
   },
   {
-    id: 7,
+    id: 7, sku: "HDV-007",
     name: "Hạt Điều Socola",
     description: "Bọc socola đen đắng, kết hợp hoàn hảo giữa ngọt và béo.",
-    price: 165000,
-    weight: "200g",
-    image: "img/OIP.jpg",
-    badge: "Mới",
-    badgeType: "new",
+    price: 165000, weight: "200g",
+    image: "img/OIP.jpg", badge: "Mới", badgeType: "new",
   },
   {
-    id: 8,
+    id: 8, sku: "HDV-008",
     name: "Hạt Điều Muối Biển",
     description: "Rang với muối biển tinh khiết, vị nhẹ thanh, ít mặn hơn.",
-    price: 125000,
-    weight: "250g",
-    image: "img/OIP (1).jpg",
-    badge: null,
-    badgeType: null,
+    price: 125000, weight: "250g",
+    image: "img/OIP (1).jpg", badge: null, badgeType: null,
   },
   {
-    id: 9,
+    id: 9, sku: "HDV-009",
     name: "Combo Mix Hạt",
     description: "Hạt điều kết hợp hạnh nhân, óc chó và macadamia.",
-    price: 220000,
-    weight: "300g",
-    image: "img/OIP.jpg",
-    badge: "Hot deal",
-    badgeType: "hot",
+    price: 220000, weight: "300g",
+    image: "img/OIP.jpg", badge: "Hot deal", badgeType: "hot",
   },
 ];
+
+// Nếu admin đã lưu chỉnh sửa → dùng dữ liệu đó, không dùng hardcode
+(function loadAdminProducts() {
+  const saved = localStorage.getItem("adminProducts");
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length) {
+        products.length = 0;
+        parsed.forEach(p => products.push(p));
+      }
+    } catch { /* bỏ qua nếu JSON lỗi */ }
+  }
+})();
 
 // ===== TIỆN ÍCH =====
 // Định dạng số thành tiền Việt: 120000 → "120.000₫"
@@ -198,6 +185,7 @@ function addToCart(productId) {
     // Sản phẩm chưa có → thêm mới với quantity = 1
     cart.push({
       id:       product.id,
+      sku:      product.sku,
       name:     product.name,
       price:    product.price,
       quantity: 1,
@@ -449,13 +437,142 @@ document.getElementById("btn-clear").addEventListener("click", () => {
   updateCartUI();
 });
 
-// --- Nút "Thanh toán" ---
-document.querySelector(".btn-checkout").addEventListener("click", () => {
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  alert(`Đặt hàng thành công!\nTổng thanh toán: ${formatPrice(total)}\n\nCảm ơn bạn đã mua hàng! 🌰`);
+// =============================================================
+// MODAL THANH TOÁN
+// =============================================================
+
+const checkoutModal = document.getElementById("checkout-modal");
+const successModal  = document.getElementById("success-modal");
+const checkoutForm  = document.getElementById("checkout-form");
+
+// Mở modal và điền bảng đơn hàng chi tiết
+function openCheckoutModal() {
+  if (cart.length === 0) return;
+
+  const listEl  = document.getElementById("modal-item-list");
+  const totalEl = document.getElementById("modal-grand-total");
+
+  // Xây bảng sản phẩm
+  const rows = cart.map((item) => `
+    <tr>
+      <td class="col-name">${item.name}</td>
+      <td class="col-price">${formatPrice(item.price)}</td>
+      <td class="col-qty">${item.quantity}</td>
+      <td class="col-sub">${formatPrice(item.price * item.quantity)}</td>
+    </tr>`).join("");
+
+  listEl.innerHTML = `
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Tên sản phẩm</th>
+          <th>Đơn giá</th>
+          <th>SL</th>
+          <th>Thành tiền</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+
+  const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  totalEl.textContent = formatPrice(total);
+
+  checkoutModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+  document.getElementById("field-name").focus();
+}
+
+function closeCheckoutModal() {
+  checkoutModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function openSuccessModal(customerName, total) {
+  document.getElementById("success-message").textContent =
+    `Cảm ơn ${customerName}! Đơn hàng ${formatPrice(total)} đã được ghi nhận.`;
+  successModal.classList.add("active");
+}
+
+function closeSuccessModal() {
+  successModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+// Validate trường bắt buộc
+function validateField(el) {
+  const ok = el.value.trim() !== "";
+  el.classList.toggle("error", !ok);
+  return ok;
+}
+
+// Xử lý submit form
+checkoutForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nameEl    = document.getElementById("field-name");
+  const phoneEl   = document.getElementById("field-phone");
+  const addressEl = document.getElementById("field-address");
+
+  const valid = [nameEl, phoneEl, addressEl].map(validateField).every(Boolean);
+  if (!valid) return;
+
+  const order = {
+    id:          `HD${Date.now()}`,
+    createdAt:   new Date().toISOString(),
+    customer: {
+      name:    nameEl.value.trim(),
+      phone:   phoneEl.value.trim(),
+      address: addressEl.value.trim(),
+      note:    document.getElementById("field-note").value.trim(),
+    },
+    items: cart.map((i) => ({
+      id:        i.id,
+      sku:       i.sku,
+      name:      i.name,
+      unitPrice: i.price,
+      quantity:  i.quantity,
+      subtotal:  i.price * i.quantity,
+    })),
+    total: cart.reduce((sum, i) => sum + i.price * i.quantity, 0),
+    status: "pending",
+  };
+
+  // Lưu đơn hàng vào localStorage
+  const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+  orders.push(order);
+  localStorage.setItem("orders", JSON.stringify(orders));
+  localStorage.setItem("lastOrder", JSON.stringify(order));
+
+  // Xóa giỏ hàng, đóng modal, hiện thành công
   cart = [];
   saveCart();
   updateCartUI();
+  closeCheckoutModal();
+  checkoutForm.reset();
+  openSuccessModal(order.customer.name, order.total);
+
+  console.log("[Đơn hàng mới]", JSON.stringify(order, null, 2));
+});
+
+// Sự kiện đóng modal
+document.querySelector(".btn-checkout").addEventListener("click", openCheckoutModal);
+document.getElementById("modal-close-btn").addEventListener("click", closeCheckoutModal);
+document.getElementById("success-close-btn").addEventListener("click", closeSuccessModal);
+
+// Đóng khi nhấn vào nền
+checkoutModal.addEventListener("click", (e) => {
+  if (e.target === checkoutModal) closeCheckoutModal();
+});
+successModal.addEventListener("click", (e) => {
+  if (e.target === successModal) closeSuccessModal();
+});
+
+// Escape đóng modal
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeCheckoutModal();
+    closeSuccessModal();
+  }
 });
 
 // =============================================================

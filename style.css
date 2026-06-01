@@ -443,6 +443,279 @@ nav a:hover {
 
 .btn-clear:hover { background: #ffe0e0; color: #c0392b; border-color: #c0392b; }
 
+/* ===== MODAL THANH TOÁN ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--cream-dark);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--brown-dark);
+  transition: background 0.15s;
+  line-height: 1;
+}
+
+.modal-close-btn:hover { background: var(--orange-light); color: var(--white); }
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brown-dark);
+  margin-bottom: 20px;
+  padding-right: 40px;
+}
+
+/* Mã sản phẩm trên card */
+.product-sku {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  background: var(--cream-dark);
+  border-radius: 4px;
+  padding: 2px 6px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 2px;
+}
+
+/* Tóm tắt đơn hàng trong modal */
+.modal-order-summary {
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.modal-subtitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Wrapper cuộn ngang trên mobile */
+.order-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+/* Bảng chi tiết đơn hàng */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+.order-table thead tr {
+  background: var(--brown-dark);
+  color: var(--cream);
+}
+
+.order-table th {
+  padding: 9px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.3px;
+}
+
+.order-table tbody tr {
+  border-bottom: 1px solid var(--cream-dark);
+  transition: background 0.15s;
+}
+
+.order-table tbody tr:last-child { border-bottom: none; }
+.order-table tbody tr:hover { background: rgba(224,123,57,0.06); }
+
+.order-table td { padding: 8px 10px; color: var(--text-dark); }
+
+/* Cột cụ thể */
+.col-sku   { font-family: monospace; color: var(--text-mid); font-size: 0.78rem; }
+.col-name  { font-weight: 600; white-space: normal; }
+.col-price { text-align: right; }
+.col-qty   { text-align: center; font-weight: 700; }
+.col-sub   { text-align: right; font-weight: 700; color: var(--orange); }
+
+/* Dòng tổng cộng */
+.modal-total-row {
+  border-top: 2px solid var(--cream-dark);
+  padding-top: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-total-row strong {
+  font-size: 1.25rem;
+  color: var(--orange);
+}
+
+/* Form nhập thông tin */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.required { color: #e53e3e; }
+
+.form-group input,
+.form-group textarea {
+  border: 1.5px solid var(--cream-dark);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: var(--text-dark);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(224, 123, 57, 0.15);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e53e3e;
+}
+
+.btn-confirm-order {
+  width: 100%;
+  background: linear-gradient(135deg, var(--brown-dark), var(--orange));
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.15s;
+  margin-top: 4px;
+}
+
+.btn-confirm-order:hover { opacity: 0.9; transform: scale(1.01); }
+.btn-confirm-order:active { transform: scale(0.98); }
+
+.btn-confirm-order:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Modal thành công */
+.modal-box--success {
+  text-align: center;
+  max-width: 420px;
+  padding: 40px 32px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: #38a169;
+  color: white;
+  border-radius: 50%;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.modal-box--success h2 {
+  font-size: 1.4rem;
+  color: var(--brown-dark);
+  margin-bottom: 12px;
+}
+
+.modal-box--success p {
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.success-note {
+  font-size: 0.82rem !important;
+  font-style: italic;
+  margin-bottom: 24px !important;
+}
+
+/* Responsive modal */
+@media (max-width: 600px) {
+  .modal-box { padding: 24px 18px; }
+  .form-row  { grid-template-columns: 1fr; }
+}
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--brown-dark);

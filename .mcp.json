@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "gmail-orders": {
+      "command": "node",
+      "args": ["server/mcp-gmail.js"],
+      "env": {
+        "GMAIL_USER": "REPLACE_YOUR_GMAIL@gmail.com",
+        "GMAIL_APP_PASSWORD": "REPLACE_16_CHAR_APP_PASSWORD",
+        "OWNER_EMAIL": "REPLACE_YOUR_GMAIL@gmail.com"
+      }
+    }
+  }
+}
