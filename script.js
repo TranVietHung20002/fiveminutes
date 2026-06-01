@@ -428,6 +428,16 @@ checkoutForm.addEventListener("submit", (e) => {
   localStorage.setItem("orders", JSON.stringify(orders));
   localStorage.setItem("lastOrder", JSON.stringify(order));
 
+  // Gửi email tự động qua API server
+  fetch("http://localhost:3001/send-email", {
+    method:  "POST",
+    headers: { "Content-Type": "application/json" },
+    body:    JSON.stringify(order),
+  })
+    .then((r) => r.json())
+    .then((d) => d.ok && console.log("Email gửi thành công:", d.emailId))
+    .catch(() => console.warn("Server email chưa chạy — bỏ qua gửi email."));
+
   cart = []; saveCart(); updateCartUI();
   closeCheckoutModal(); checkoutForm.reset();
   openSuccessModal(order.customer.name, order.total);
