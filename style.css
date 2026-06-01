@@ -977,27 +977,56 @@ footer {
   .section-title { font-size: 1.3rem; }
 }
 
-/* ----- Mobile nhỏ: < 480px ----- */
+/* ----- Mobile nhỏ: < 480px (400×645) — 2 cột sản phẩm ----- */
 @media (max-width: 479px) {
 
-  .logo-icon { font-size: 1.4rem; }
-  .logo-text  { font-size: 1rem; }
+  .logo-icon { font-size: 1.3rem; }
+  .logo-text  { font-size: 0.95rem; }
 
-  /* 1 cột sản phẩm */
+  /* Layout: padding nhỏ hơn để tận dụng không gian */
+  .main-layout { padding: 16px 10px; }
+
+  /* 2 cột, gap nhỏ hơn để vừa màn hình 400px */
   .product-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
-  .product-card img { height: 200px; }
+  /* Ảnh thấp hơn để card không quá cao */
+  .product-card img { height: 120px; }
+
+  /* Info padding nhỏ hơn */
+  .product-info {
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .product-info h3 { font-size: 0.82rem; }
+  .product-desc     { font-size: 0.75rem; }
+
+  /* Giá và nút xếp dọc, nút full width */
+  .product-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .price { font-size: 0.9rem; }
+
+  .btn-add {
+    text-align: center;
+    padding: 7px 6px;
+    font-size: 0.75rem;
+  }
 
   /* Hero nhỏ gọn */
-  .hero { padding: 36px 14px; }
-  .hero-content h1 { font-size: 1.5rem; }
-  .btn-hero { padding: 12px 28px; font-size: 0.92rem; }
+  .hero         { padding: 32px 14px; }
+  .hero-content h1 { font-size: 1.4rem; }
+  .btn-hero     { padding: 11px 24px; font-size: 0.88rem; }
 
-  /* Nút thêm giỏ full width */
-  .product-footer { flex-direction: column; align-items: stretch; }
-  .btn-add { text-align: center; padding: 10px; }
+  /* Section title */
+  .section-title { font-size: 1.1rem; margin-bottom: 14px; }
 
-  footer { font-size: 0.8rem; padding: 16px; margin-top: 40px; }
+  footer { font-size: 0.78rem; padding: 14px; margin-top: 32px; }
 }
