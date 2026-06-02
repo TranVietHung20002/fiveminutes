@@ -278,6 +278,15 @@ nav a:hover {
   flex: 1;
 }
 
+/* Dòng đơn vị: 1 Hộp / 2 Hộp */
+.product-unit {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  font-weight: 500;
+  margin-top: 4px;
+  display: block;
+}
+
 /* Dòng meta: số lượng + ship */
 .product-meta {
   display: flex;
