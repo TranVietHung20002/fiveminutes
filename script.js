@@ -4,10 +4,6 @@ const products = [
   { id:2, sku:"HDV-002", name:"Hạt Điều Nguyên Vỏ Lụa",  description:"Phủ mật ong nguyên chất, vị ngọt thanh tự nhiên.",                        price:100000, weight:"1kg",  stock:30, unit:"2 Hộp",  image:"img/2hop.jpg",      badge:"Bán chạy", badgeType:"hot" },
   { id:3, sku:"HDV-003", name:"Hạt Điều Nguyên Vỏ Lụa",  description:"Sấy khô tự nhiên, giữ nguyên dinh dưỡng và hương vị.",                    price:100000, weight:"1kg",  stock:40, unit:"5 Hộp",  image:"img/5hopp.jpg",     badge:"Mới",      badgeType:"new" },
   { id:4, sku:"HDV-004", name:"Hạt Điều Tỏi Ớt",         description:"Cay nồng hấp dẫn, thích hợp cho người thích vị đậm.",                     price:100000, weight:"1kg",  stock:25, unit:"2 Hộp",  image:"img/tỏi ớt.jpg",   badge:null,       badgeType:null  },
-  { id:5, sku:"HDV-005", name:"Điều Nguyên Vỏ Lụa",      description:"Hạt điều nguyên vỏ lụa tươi ngon, đóng gói 2 hộp tiện lợi.",              price:120000, weight:"1kg",  stock:35, unit:"2 Hộp",  image:"img/2 hộp.jpg",    badge:null,       badgeType:null  },
-  { id:6, sku:"HDV-006", name:"Điều Rang Đặc Biệt",       description:"Rang theo công thức gia truyền, giòn thơm đặc trưng.",                    price:140000, weight:"500g", stock:20, unit:"1 Hộp",  image:"img/dieu10.jpg",    badge:null,       badgeType:null  },
-  { id:7, sku:"HDV-007", name:"Hạt Điều Rang Muối",       description:"Hạt điều rang muối truyền thống, giòn tan, đậm vị.",                      price:120000, weight:"250g", stock:45, unit:"1 Hộp",  image:"img/OIP.jpg",       badge:null,       badgeType:null  },
-  { id:8, sku:"HDV-008", name:"Hạt Điều Mật Ong",         description:"Phủ mật ong nguyên chất, kết hợp vị béo ngậy tự nhiên.",                  price:145000, weight:"250g", stock:18, unit:"1 Hộp",  image:"img/OIP (1).jpg",   badge:"Mới",      badgeType:"new" },
 ];
 
 // Nếu admin đã lưu chỉnh sửa → dùng dữ liệu đó, không dùng hardcode
