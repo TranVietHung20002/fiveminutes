@@ -27,52 +27,43 @@ function formatPrice(amount) {
 }
 
 // ===== RENDER SẢN PHẨM =====
-// Duyệt qua mảng products, tạo từng card bằng DOM API rồi gắn vào #product-grid
 function renderProducts() {
   const grid = document.getElementById("product-grid");
-  grid.innerHTML = ""; // xóa nội dung cũ trước khi vẽ lại
+  grid.innerHTML = "";
 
   products.forEach((product) => {
-
-    // --- 1. THẺ BAO NGOÀI ---
     const card = document.createElement("div");
     card.className = "product-card";
 
-    // --- 2. NHÃN GÓC (chỉ tạo nếu sản phẩm có badge) ---
     if (product.badge) {
       const badge = document.createElement("div");
-      badge.className = `product-badge ${product.badgeType}`;
+      badge.className   = `product-badge ${product.badgeType}`;
       badge.textContent = product.badge;
       card.appendChild(badge);
     }
 
-    // --- 3. ẢNH SẢN PHẨM ---
     const img = document.createElement("img");
     img.src = product.image;
     img.alt = product.name;
     card.appendChild(img);
 
-    // --- 4. KHU VỰC THÔNG TIN ---
     const info = document.createElement("div");
     info.className = "product-info";
 
-    // Tên sản phẩm
     const title = document.createElement("h3");
     title.textContent = product.name;
     info.appendChild(title);
 
-    // Mô tả
     const desc = document.createElement("p");
-    desc.className = "product-desc";
-    desc.textContent = product.description;
+    desc.className    = "product-desc";
+    desc.textContent  = product.description;
     info.appendChild(desc);
 
-    // Dòng meta: số lượng tồn + nhãn ship
     const meta = document.createElement("div");
     meta.className = "product-meta";
 
     const stockEl = document.createElement("span");
-    stockEl.className = "product-stock";
+    stockEl.className   = "product-stock";
     stockEl.textContent = `Còn: ${product.stock ?? "—"}`;
     meta.appendChild(stockEl);
 
@@ -83,28 +74,22 @@ function renderProducts() {
 
     info.appendChild(meta);
 
-    // --- 5. FOOTER (giá + nút) ---
     const footer = document.createElement("div");
     footer.className = "product-footer";
 
-    // Giá tiền
     const priceSpan = document.createElement("span");
     priceSpan.className = "price";
     priceSpan.innerHTML = `${formatPrice(product.price)}<small>/${product.weight}</small>`;
     footer.appendChild(priceSpan);
 
-    // Nút "Thêm vào giỏ"
     const btn = document.createElement("button");
-    btn.className = "btn-add";
+    btn.className   = "btn-add";
     btn.textContent = "+ Thêm vào giỏ";
-    btn.dataset.id    = product.id;
-    btn.dataset.name  = product.name;
-    btn.dataset.price = product.price;
+    btn.dataset.id  = product.id;
     footer.appendChild(btn);
 
     info.appendChild(footer);
 
-    // Dòng đơn vị (1 Hộp / 2 Hộp...)
     if (product.unit) {
       const unitEl = document.createElement("span");
       unitEl.className   = "product-unit";
@@ -113,8 +98,6 @@ function renderProducts() {
     }
 
     card.appendChild(info);
-
-    // --- 6. GẮN CARD VÀO LƯỚI ---
     grid.appendChild(card);
   });
 }
@@ -433,9 +416,7 @@ checkoutForm.addEventListener("submit", (e) => {
     method:  "POST",
     headers: { "Content-Type": "application/json" },
     body:    JSON.stringify(order),
-  })
-    .then((r) => r.json())
-    .catch(() => {});
+  }).catch(() => {});
 
   cart = []; saveCart(); updateCartUI();
   closeCheckoutModal(); checkoutForm.reset();
