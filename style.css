@@ -806,10 +806,52 @@ nav a:hover {
   margin-bottom: 24px !important;
 }
 
-/* Responsive modal */
-@media (max-width: 600px) {
-  .modal-box { padding: 24px 18px; }
-  .form-row  { grid-template-columns: 1fr; }
+/* Responsive modal — 400×642 */
+@media (max-width: 480px) {
+
+  /* Overlay sát cạnh, không padding dư */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+
+  /* Modal chiếm toàn bộ chiều ngang, trượt từ dưới lên */
+  .modal-box {
+    padding: 20px 14px 28px;
+    border-radius: 18px 18px 0 0;
+    max-height: 96vh;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Nút đóng nhỏ gọn hơn */
+  .modal-close-btn { top: 12px; right: 12px; width: 28px; height: 28px; font-size: 0.85rem; }
+
+  /* Tiêu đề nhỏ hơn */
+  .modal-title { font-size: 1.1rem; margin-bottom: 12px; padding-right: 36px; }
+
+  /* Tóm tắt đơn hàng padding nhỏ */
+  .modal-order-summary { padding: 10px; margin-bottom: 14px; }
+  .modal-subtitle       { font-size: 0.78rem; margin-bottom: 8px; }
+
+  /* Bảng sản phẩm — chữ nhỏ hơn, padding nhỏ */
+  .order-table          { font-size: 0.75rem; }
+  .order-table th,
+  .order-table td       { padding: 6px 6px; }
+  .modal-total-row      { font-size: 0.88rem; padding-top: 8px; }
+  .modal-total-row strong { font-size: 1rem; }
+
+  /* Form — 1 cột, khoảng cách nhỏ */
+  .form-row             { grid-template-columns: 1fr; gap: 0; }
+  .form-group           { margin-bottom: 10px; }
+  .form-group label     { font-size: 0.8rem; }
+  .form-group input,
+  .form-group textarea  { padding: 8px 10px; font-size: 0.88rem; }
+
+  /* Nút xác nhận */
+  .btn-confirm-order { padding: 12px; font-size: 0.92rem; margin-top: 2px; }
+
+  /* Modal thành công */
+  .modal-box--success      { padding: 32px 20px; }
+  .success-icon            { width: 52px; height: 52px; font-size: 1.6rem; }
+  .modal-box--success h2   { font-size: 1.2rem; }
 }
 
 /* ===== FOOTER ===== */
